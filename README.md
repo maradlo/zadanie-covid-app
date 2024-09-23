@@ -34,17 +34,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-COVID-19 deaths ONS by day
-This metric shows the daily number of deaths of people whose death certificate mentioned COVID-19 as one of the causes.
-
-Category deaths
-Topic COVID-19
-API name COVID-19_deaths_ONSByDay
-
-COVID-19 cases cases by day
-This metric shows the number of reported new cases for each day.
-
-Category cases
-Topic COVID-19
-API name COVID-19_cases_casesByDay

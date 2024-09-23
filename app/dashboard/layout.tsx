@@ -30,7 +30,7 @@ export default function DashboardLayout({
     <Flex style={{ height: "100vh", width: "100vw" }}>
       <Layout style={layoutStyle}>
         <Header style={headerStyle}>COVID19 app</Header>
-        <Content>{children}</Content>{" "}
+        <Content>{children}</Content>
       </Layout>
     </Flex>
   );
