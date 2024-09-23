@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { Card, Avatar, Button } from "antd";
+import { Card, Avatar } from "antd";
 import { Chart } from "@antv/g2";
 import { CommentOutlined } from "@ant-design/icons";
 
+interface CasesDataItem {
+  date: string;
+  Cases: number;
+}
+
 interface BarChartCardProps {
-  data: any[];
-  xField: string;
-  yField: string;
+  data: CasesDataItem[];
+  xField: keyof CasesDataItem;
+  yField: keyof CasesDataItem;
   title: string;
 }
 
@@ -17,7 +22,7 @@ export const BarChartCard: React.FC<BarChartCardProps> = ({
   title,
 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
-  const chartInstance = useRef<any>(null);
+  const chartInstance = useRef<Chart | null>(null);
 
   useEffect(() => {
     if (chartRef.current && data.length > 0) {
@@ -33,11 +38,11 @@ export const BarChartCard: React.FC<BarChartCardProps> = ({
       chart.scale({
         [xField]: {
           type: "timeCat",
-          mask: "MMM DD, YYYY", // Format date labels
+          mask: "MMM DD, YYYY",
           tickCount: 5,
         },
         [yField]: {
-          alias: "Cases", // Y-axis label
+          alias: "Cases",
         },
       });
 

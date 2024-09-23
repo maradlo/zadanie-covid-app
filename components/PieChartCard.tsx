@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { Card, Avatar, Button } from "antd";
+import { Card, Avatar } from "antd";
 import { Chart } from "@antv/g2";
 import { CommentOutlined } from "@ant-design/icons";
 
+interface DeathsDataItem {
+  month: string;
+  Deaths: number;
+}
+
 interface PieChartCardProps {
-  data: any[];
-  xField: string;
-  yField: string;
+  data: DeathsDataItem[];
+  xField: keyof DeathsDataItem;
+  yField: keyof DeathsDataItem;
   title: string;
 }
 
@@ -17,7 +22,7 @@ export const PieChartCard: React.FC<PieChartCardProps> = ({
   title,
 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
-  const chartInstance = useRef<any>(null);
+  const chartInstance = useRef<Chart | null>(null);
 
   useEffect(() => {
     if (chartRef.current && data.length > 0) {
@@ -32,7 +37,7 @@ export const PieChartCard: React.FC<PieChartCardProps> = ({
 
       chart.scale({
         [yField]: {
-          alias: "Deaths", // Set the label for deaths
+          alias: "Deaths",
         },
       });
 
@@ -45,7 +50,7 @@ export const PieChartCard: React.FC<PieChartCardProps> = ({
         .encode("color", xField)
         .legend("color", { position: "right", title: null })
         .label({
-          text: (data: any) => `${data[xField]}: ${data[yField]}`,
+          text: (datum: DeathsDataItem) => `${datum[xField]}: ${datum[yField]}`,
           position: "outside",
           style: { fill: "#000" },
         });
